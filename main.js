@@ -105,7 +105,7 @@ document.querySelectorAll('.liftB_button').forEach(button => button.addEventList
   let segmentsB = [...document.querySelectorAll('.segmentB')].reverse();
   let floor = e.target.dataset.floor;
   var destination = elevatorB.position - floor;
-  var directionB = document.querySelectorAll('.liftA')
+  var directionB = document.querySelectorAll('.liftB')
   var panelB = document.querySelector('#directionB')
   Display.elevatorDirection(elevatorB, floor, directionB, panelB)
   Dispatcher.moveLift(elevatorB, floor)
@@ -123,7 +123,7 @@ document.querySelectorAll('.liftA_button').forEach(button => button.addEventList
   let segmentsA = [...document.querySelectorAll('.segmentA')].reverse();
   let floor = e.target.dataset.floor;
   var destination = elevatorA.position - floor;
-  var directionA = document.querySelectorAll('.liftB')
+  var directionA = document.querySelectorAll('.liftA')
   var panelA = document.querySelector('#directionA');
   Display.elevatorDirection(elevatorA, floor, directionA, panelA)
   Dispatcher.moveLift(elevatorA, floor)

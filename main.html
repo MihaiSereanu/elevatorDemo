@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="main.css">
+  <title>Elevator</title>
+</head>
+<body>
+  <h1>Elevator System Demo</h1>
+  <div class="floors">
+    <div class="elevator B"><span>B</span></div>
+      <div class="floor">
+        <div class="direction liftB"><span></span></div>
+        <button data-key="6">▲</button>
+        <span>Floor 6</span>
+        <button data-key="6">▼</button>
+        <div class="direction liftA"><span></span></div>
+      </div>
+      <div class="floor">
+        <div class="direction liftB"><span></span></div>
+        <button data-key="5">▲</button>
+        <span>Floor 5</span>
+        <button data-key="5">▼</button>
+        <div class="direction liftA"><span></span></div>
+      </div>
+      <div class="floor">
+        <div class="direction liftB"><span></span></div>
+        <button data-key="4">▲</button>
+        <span>Floor 4</span>
+        <button data-key="4">▼</button>
+        <div class="direction liftA"><span></span></div>
+      </div>
+      <div class="floor">
+        <div class="direction liftB"><span></span></div>
+        <button data-key="3">▲</button>
+        <span>Floor 3</span>
+        <button data-key="3">▼</button>
+        <div class="direction liftA"><span></span></div>
+      </div>
+      <div class="floor">
+        <div class="direction liftB"><span></span></div>
+        <button data-key="2">▲</button>
+        <span>Floor 2</span>
+        <button data-key="2">▼</button>
+        <div class="direction liftA"><span></span></div>
+      </div>
+      <div class="floor">
+        <div class="direction liftB"><span></span></div>
+        <button data-key="1">▲</button>
+        <span>Floor 1</span>
+        <button data-key="1">▼</button>
+        <div class="direction liftA"><span></span></div>
+      </div>
+      <div class="floor">
+        <div class="direction liftB"><span></span></div>
+        <button data-key="0">▲</button>
+        <span>Floor 0</span>
+        <button data-key="0">▼</button>
+        <div class="direction liftA"><span></span></div>
+      </div>
+    <div class="elevator A"><span>A</span></div>
+  </div>
+
+  <h2 class='insideB'>Inside Elevator B</h2>
+  <div class="innerPanel EL_B"> <!-- style='display:none' -->
+    <div class="buttonpad">
+    <button class="liftB_button" data-floor='6'>B6</button>
+    <button class="liftB_button" data-floor='5'>B5</button>
+    <button class="liftB_button" data-floor='4'>B4</button>
+    <button class="liftB_button" data-floor='3'>B3</button>
+    <button class="liftB_button" data-floor='2'>B2</button>
+    <button class="liftB_button" data-floor='1'>B1</button>
+    <button class="liftB_button" data-floor='0'>BP</button>
+    </div>
+    <div class="innerdisplayB">
+      <div class="segmentB filled"></div>
+      <div class="segmentB"></div>
+      <div class="segmentB"></div>
+      <div class="segmentB"></div>
+      <div class="segmentB"></div>
+      <div class="segmentB"></div>
+      <div class="segmentB"></div>
+    </div>
+  </div>
+
+  <h2 class='insideA'>Inside Elevator A</h2>
+  <div class="innerPanel EL_A"> <!-- style='display:none' -->
+    <div class="buttonpad">
+    <button class="liftA_button" data-floor='6'>A6</button>
+    <button class="liftA_button" data-floor='5'>A5</button>
+    <button class="liftA_button" data-floor='4'>A4</button>
+    <button class="liftA_button" data-floor='3'>A3</button>
+    <button class="liftA_button" data-floor='2'>A2</button>
+    <button class="liftA_button" data-floor='1'>A1</button>
+    <button class="liftA_button" data-floor='0'>AP</button>
+    </div>
+    <div class="innerdisplayA">
+      <div class="segmentA"></div>
+      <div class="segmentA"></div>
+      <div class="segmentA"></div>
+      <div class="segmentA"></div>
+      <div class="segmentA"></div>
+      <div class="segmentA"></div>
+      <div class="segmentA filled"></div>
+    </div>
+  </div>
+
+  <div class="elevatorState">
+    <div class="elevatorB">
+      <h2>Elevator B</h2>
+      <p>Current floor: 6</p>
+      <p id="directionB">Moving: </p>
+    </div>
+
+    <div class="elevatorA">
+      <h2>Elevator A</h2>
+      <p>Current floor: 0 </p>
+      <p id="directionA">Moving: </p>
+    </div>
+
+  </div>
+
+<script src="main.js"></script>
+<script src="Display.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+* {
+  box-sizing: border-box
+}
+
+html {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+.floors {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  height: 700px;
+}
+
+.insideB {
+  position: absolute;
+  top: 10%;
+  left: 15%;
+}
+
+.insideA {
+  position: absolute;
+  top: 10%;
+  right: 15%;
+}
+
+.innerPanel {
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  top: 15%;
+  width: 200px;
+  height: 500px;
+  background-color: darkgrey;
+  border: 3px solid black;
+  border-radius: 10px;
+}
+
+.innerPanel.EL_B {
+  left: 15%;
+}
+
+.innerPanel.EL_A {
+  right: 15%;
+}
+
+.buttonpad {
+  display: flex;
+  flex-direction: column;
+  height: 445px;
+  width: 100px;
+  margin-left: 15px;
+}
+
+.innerPanel.EL_B button,
+.innerPanel.EL_A button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  border: 2px solid black;
+}
+
+.innerdisplayB,
+.innerdisplayA {
+  background-color: red;
+  height: 455px;
+  width: 100px;
+  margin-right: 15px;
+  border: 1px solid black;
+  background-color: white;
+}
+
+.segmentA,
+.segmentB {
+  width: 100%;
+  height: 65px;
+  border: 1px solid black;
+}
+
+.segmentA:last-child,
+.segmentB:last-child {
+  border-bottom: 2px solid black;
+}
+
+.filled {
+  background-color: #BADA55;
+}
+
+
+.elevatorState {
+  margin: 0 auto;
+  margin-top: 50px;
+  height: 200px;
+  width: 500px;
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+  align-items: center;
+  border: 3px solid black;
+  border-radius: 5px;
+  background-color: darkgrey;
+}
+
+.elevatorState .elevatorB{
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.elevatorState .elevatorA{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.elevatorB > p,
+.elevatorA > p {
+  font-size: 20px;
+}
+
+.elevator {
+  width: 50px;
+  height: 60px;
+  position: absolute;
+  z-index:1;
+  background-color: darkgrey;
+  border: 2px solid black;
+  text-align: center;
+  transition: all 1s linear;
+}
+
+.elevator span {
+  font-family: sans-serif;
+  font-size: 2.5em;
+}
+
+.elevator.B {
+  top: 0;
+  margin-top: -10px;
+  margin-left: -200px;
+}
+
+.elevator.A {
+  bottom: 0;
+  margin-bottom: 50px;
+  margin-left: 200px;
+}
+
+.floor {
+  display: flex;
+  width: 300px;
+  height: 100px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.floor button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.3em;
+  text-align: center;
+  border: 2px solid black;
+}
+
+.floor span {
+  font-family: sans-serif;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.direction {
+  width: 30px;
+  height: 30px;
+  background-color: darkgrey;
+  border: 2px solid black;
+  text-align: center;
+  padding-top: 0.4em;
+}

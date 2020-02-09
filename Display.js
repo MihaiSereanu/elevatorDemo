@@ -3,14 +3,18 @@ class Display {
     elevator.style.transform += `translateY(${distance}00px)`
   }
 
-  static updateCurrentA() {
-    let a_current = document.querySelector('.elevatorA p');
-    a_current.innerHTML = `Current floor: ${elevatorA.position}`;
-  }
+  // static updateCurrentA() {
+  //   let a_current = document.querySelector('.elevatorA p');
+  //   a_current.innerHTML = `Current floor: ${elevatorA.position}`;
+  // }
+  //
+  // static updateCurrentB() {
+  //   let b_current = document.querySelector('.elevatorB p');
+  //   b_current.innerHTML = `Current floor: ${elevatorB.position}`;
+  // }
 
-  static updateCurrentB() {
-    let b_current = document.querySelector('.elevatorB p');
-    b_current.innerHTML = `Current floor: ${elevatorB.position}`;
+  static updateCurrent(current, elevator) {
+    current.innerHTML = `Current floor: ${elevator.position}`
   }
 
 static elevatorDirection(elevator, requestedFloor, direction, panel) {
@@ -34,7 +38,6 @@ static elevatorDirection(elevator, requestedFloor, direction, panel) {
   static clearInner(segments) {
     segments.forEach(segment => segment.classList.remove('filled'))
   }
-  
   // static togglePanel(innerPanel) {
   //   if (innerPanel.style.display == 'none') {
   //     innerPanel.style.display = 'flex';

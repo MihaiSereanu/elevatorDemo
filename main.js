@@ -23,19 +23,22 @@ class Dispatcher {
     var elevatorDivB = document.querySelector('.B')
     var innerPanelA = document.querySelector('.EL_A')
     var innerPanelB = document.querySelector('.EL_B')
+    var segmentsA = [...document.querySelectorAll('.segmentA')].reverse();
+    var segmentsB = [...document.querySelectorAll('.segmentB')].reverse();
     var directionA = document.querySelectorAll('.liftA')
     var directionB = document.querySelectorAll('.liftB')
     var panelA = document.querySelector('#directionA');
     var panelB = document.querySelector('#directionB')
-    var segmentsA = [...document.querySelectorAll('.segmentA')].reverse();
-    var segmentsB = [...document.querySelectorAll('.segmentB')].reverse();
+    var currentA = document.querySelector('.elevatorA p')
+    var currentB = document.querySelector('.elevatorB p')
+
     // main
     if (distanceA > distanceB) {
       Display.elevatorDirection(elevatorB, requestedFloor, directionB, panelB);
       Dispatcher.moveLift(elevatorB, requestedFloor);
       Display.clearInner(segmentsB)
       Display.fillInner(segmentsB, elevatorB.position)
-      Display.updateCurrentB();
+      Display.updateCurrent(currentB, elevatorB);
       Display.translateElevator(elevatorDivB, destinationB);
     }
     else if (distanceB > distanceA) {
@@ -43,7 +46,7 @@ class Dispatcher {
       Dispatcher.moveLift(elevatorA, requestedFloor)
       Display.clearInner(segmentsA);
       Display.fillInner(segmentsA, elevatorA.position)
-      Display.updateCurrentA();
+      Display.updateCurrent(currentA, elevatorA);
       Display.translateElevator(elevatorDivA, destinationA)
     }
     else if (distanceA === distanceB) {
@@ -52,7 +55,7 @@ class Dispatcher {
         Dispatcher.moveLift(elevatorA, requestedFloor);
         Display.clearInner(segmentsA);
         Display.fillInner(segmentsA, elevatorA.position)
-        Display.updateCurrentA();
+        Display.updateCurrent(currentA, elevatorA);
         Display.translateElevator(elevatorDivA, destinationA);
       }
       if (elevatorA.position > elevatorB.position) {
@@ -60,7 +63,7 @@ class Dispatcher {
         Dispatcher.moveLift(elevatorB, requestedFloor);
         Display.clearInner(segmentsB)
         Display.fillInner(segmentsB, elevatorB.position)
-        Display.updateCurrentB();
+        Display.updateCurrent(currentB, elevatorB);
         Display.translateElevator(elevatorDivB, destinationB);
       }
       if (elevatorB.position == elevatorA.position) {
@@ -70,18 +73,18 @@ class Dispatcher {
         Dispatcher.moveLift(elevatorB, requestedFloor);
         Display.clearInner(segmentsB)
         Display.fillInner(segmentsB, elevatorB.position)
-        Display.updateCurrentB();
+        Display.updateCurrent(currentB, elevatorB);
         Display.translateElevator(elevatorDivB, destinationB)
       }
     }
   }
 
-  static innerDispatch(floor, elevator, elevatorDiv, innerPanel, segments, destination, direction, panel) {
+  static innerDispatch(floor, elevator, elevatorDiv, innerPanel, segments, destination, direction, current, panel) {
     Display.elevatorDirection(elevator, floor, direction, panel)
     Dispatcher.moveLift(elevator, floor)
     Display.clearInner(segments)
     Display.fillInner(segments, elevator.position)
-    Display.updateCurrentB();
+    Display.updateCurrent(current, elevator);
     Display.translateElevator(elevatorDiv, destination)
   }
 }
@@ -111,7 +114,8 @@ document.querySelectorAll('.liftB_button').forEach(button => button.addEventList
   var destinationB = elevatorB.position - floor;
   var directionB = document.querySelectorAll('.liftB  ')
   var panelB = document.querySelector('#directionB')
-  Dispatcher.innerDispatch(floor, elevatorB, elevatorDiv, innerPanelB, segmentsB, destinationB, directionB, panelB)
+  var currentB = document.querySelector('.elevatorB p')
+  Dispatcher.innerDispatch(floor, elevatorB, elevatorDiv, innerPanelB, segmentsB, destinationB, directionB, currentB, panelB)
 }));
 
 // inside elevator A
@@ -123,5 +127,6 @@ document.querySelectorAll('.liftA_button').forEach(button => button.addEventList
   var destinationA = elevatorA.position - floor;
   var directionA = document.querySelectorAll('.liftA')
   var panelA = document.querySelector('#directionA');
-  Dispatcher.innerDispatch(floor, elevatorA, elevatorDiv, innerPanelA, segmentsA, destinationA, directionA, panelA)
+  var currentA = document.querySelector('.elevatorA p')
+  Dispatcher.innerDispatch(floor, elevatorA, elevatorDiv, innerPanelA, segmentsA, destinationA, directionA, currentA, panelA)
 }));

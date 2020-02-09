@@ -37,7 +37,6 @@ class Dispatcher {
       Display.fillInner(segmentsB, elevatorB.position)
       Display.updateCurrentB();
       Display.translateElevator(elevatorDivB, destinationB);
-      // Display.togglePanel(innerPanelB)
     }
     else if (distanceB > distanceA) {
       Display.elevatorDirection(elevatorA, requestedFloor, directionA, panelA);
@@ -46,7 +45,6 @@ class Dispatcher {
       Display.fillInner(segmentsA, elevatorA.position)
       Display.updateCurrentA();
       Display.translateElevator(elevatorDivA, destinationA)
-      // Display.togglePanel(innerPanelA)
     }
     else if (distanceA === distanceB) {
       if (elevatorB.position > elevatorA.position) {
@@ -56,7 +54,6 @@ class Dispatcher {
         Display.fillInner(segmentsA, elevatorA.position)
         Display.updateCurrentA();
         Display.translateElevator(elevatorDivA, destinationA);
-        // Display.togglePanel(innerPanelA)
       }
       if (elevatorA.position > elevatorB.position) {
         Display.elevatorDirection(elevatorA, requestedFloor, directionA, panelA);
@@ -65,7 +62,6 @@ class Dispatcher {
         Display.fillInner(segmentsB, elevatorB.position)
         Display.updateCurrentB();
         Display.translateElevator(elevatorDivB, destinationB);
-        // Display.togglePanel(innerPanelB)
       }
       if (elevatorB.position == elevatorA.position) {
         // In this case, I think it would make sense to check for occupancy and send the free lift or the one with least people inside
@@ -76,9 +72,17 @@ class Dispatcher {
         Display.fillInner(segmentsB, elevatorB.position)
         Display.updateCurrentB();
         Display.translateElevator(elevatorDivB, destinationB)
-        // Display.togglePanel(innerPanelB)
       }
     }
+  }
+
+  static innerDispatch(floor, elevator, elevatorDiv, innerPanel, segments, destination, direction, panel) {
+    Display.elevatorDirection(elevator, floor, direction, panel)
+    Dispatcher.moveLift(elevator, floor)
+    Display.clearInner(segments)
+    Display.fillInner(segments, elevator.position)
+    Display.updateCurrentB();
+    Display.translateElevator(elevatorDiv, destination)
   }
 }
 
@@ -98,38 +102,26 @@ floorButtons.forEach(button => button.addEventListener("click", function callEle
 
 // listen for inner dispatch calls from inside elevators
 
-// inside levator B
-document.querySelectorAll('.liftB_button').forEach(button => button.addEventListener("click", function moveElevatorA(e) {
+// inside elevator B
+document.querySelectorAll('.liftB_button').forEach(button => button.addEventListener("click", function moveElevator(e) {
+  let floor = e.target.dataset.floor;
   var elevatorDiv = document.querySelector('.B')
   var innerPanelB = document.querySelector('.EL_B')
   let segmentsB = [...document.querySelectorAll('.segmentB')].reverse();
-  let floor = e.target.dataset.floor;
-  var destination = elevatorB.position - floor;
-  var directionB = document.querySelectorAll('.liftB')
+  var destinationB = elevatorB.position - floor;
+  var directionB = document.querySelectorAll('.liftB  ')
   var panelB = document.querySelector('#directionB')
-  Display.elevatorDirection(elevatorB, floor, directionB, panelB)
-  Dispatcher.moveLift(elevatorB, floor)
-  Display.clearInner(segmentsB)
-  Display.fillInner(segmentsB, elevatorB.position)
-  Display.updateCurrentB();
-  Display.translateElevator(elevatorDiv, destination)
-  // Display.togglePanel(innerPanelB)
+  Dispatcher.innerDispatch(floor, elevatorB, elevatorDiv, innerPanelB, segmentsB, destinationB, directionB, panelB)
 }));
 
 // inside elevator A
-document.querySelectorAll('.liftA_button').forEach(button => button.addEventListener("click", function moveElevatorA(e) {
+document.querySelectorAll('.liftA_button').forEach(button => button.addEventListener("click", function moveElevator(e) {
+  let floor = e.target.dataset.floor;
   var elevatorDiv = document.querySelector('.A')
   var innerPanelA = document.querySelector('.EL_A')
   let segmentsA = [...document.querySelectorAll('.segmentA')].reverse();
-  let floor = e.target.dataset.floor;
-  var destination = elevatorA.position - floor;
+  var destinationA = elevatorA.position - floor;
   var directionA = document.querySelectorAll('.liftA')
   var panelA = document.querySelector('#directionA');
-  Display.elevatorDirection(elevatorA, floor, directionA, panelA)
-  Dispatcher.moveLift(elevatorA, floor)
-  Display.clearInner(segmentsA);
-  Display.fillInner(segmentsA, elevatorA.position)
-  Display.updateCurrentA();
-  Display.translateElevator(elevatorDiv, destination)
-  // Display.togglePanel(innerPanelA)
+  Dispatcher.innerDispatch(floor, elevatorA, elevatorDiv, innerPanelA, segmentsA, destinationA, directionA, panelA)
 }));

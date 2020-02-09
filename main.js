@@ -23,8 +23,8 @@ class Dispatcher {
     var elevatorDivB = document.querySelector('.B')
     var innerPanelA = document.querySelector('.EL_A')
     var innerPanelB = document.querySelector('.EL_B')
-    var directionA = document.querySelectorAll('.liftB')
-    var directionB = document.querySelectorAll('.liftA')
+    var directionA = document.querySelectorAll('.liftA')
+    var directionB = document.querySelectorAll('.liftB')
     var panelA = document.querySelector('#directionA');
     var panelB = document.querySelector('#directionB')
     var segmentsA = [...document.querySelectorAll('.segmentA')].reverse();
